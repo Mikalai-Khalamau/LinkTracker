@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "backend-academy-2026-python-template"
+version = "0.1.0"
+description = ""
+package-mode = false
+authors = ["g.tarasov <g.tarasov@tbank.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiokafka = "^0.10.0"
+redis = {version = "^5.0.0", extras = ["hiredis"]}
+
+fastapi = "^0.104.0"
+uvicorn = {version = "^0.24.0", extras = ["standard"]}
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+structlog = "^23.2.0"
+httpx = "^0.25.0"
+python-dotenv = "^1.0.0"
+
+sqlalchemy = {version = "^2.0.0", extras = ["asyncio"]}
+asyncpg = "^0.30.0"
+alembic = "^1.12.0"
+psycopg2-binary = "^2.9.9"
+
+tenacity = "^8.2.0"
+aiobreaker = "^1.1.0"
+slowapi = "^0.1.9"       
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+isort = "^5.13.2"
+ruff = "^0.6.1"
+pytest = "*"
+pytest-cov = "*"
+pytest-deadfixtures = "*"
+pytest-mock = "*"
+pytest-repeat = "*"
+pytest-asyncio = "*"
+mypy = "^1.19.1"
+respx = "^0.23.1"
+
+testcontainers = {version = "^4.0.0", extras = ["postgresql"]}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+allow_redefinition = true
+ignore_missing_imports = true
+no_implicit_optional = true
+strict_equality = true
+warn_unused_ignores = true
+exclude = "^(.*/)?test_[\\w]*\\.py$|conftest\\.py|tests"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::sqlalchemy.exc.SAWarning",
+]

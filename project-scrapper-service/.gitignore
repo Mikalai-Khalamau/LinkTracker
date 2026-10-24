@@ -1,0 +1,14 @@
+.env
+.DS_Store
+__pycache__/
+*.py[codz]
+*$py.class
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+.ruff_cache/
+
+.venv
